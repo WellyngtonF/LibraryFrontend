@@ -11,7 +11,7 @@ const links = [
     {
         title: 'Publishers',
         icon: Apartment,
-        path: '/'
+        path: '/publishers'
     },
     {
         title: 'Authors',
@@ -21,12 +21,12 @@ const links = [
     {
         title: 'Genres',
         icon: Style,
-        path: '/'
+        path: '/genres'
     },
     {
         title: 'Books',
         icon: Book,
-        path: '/'
+        path: '/books'
     },
     {
         title: 'Wishlist',

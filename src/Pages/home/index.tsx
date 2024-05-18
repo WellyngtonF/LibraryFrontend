@@ -10,7 +10,7 @@ const Home = () => {
             <Typography variant="h4">About the project:</Typography>
             <br />
             <Typography variant="body1">
-                This is a simple project to demonstrate the use of some stacks:
+                This is a project to demonstrate the use of some stacks:
             </Typography>
             <br />
             <Typography variant="body2">

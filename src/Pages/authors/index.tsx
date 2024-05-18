@@ -2,18 +2,21 @@ import { useEffect, useState } from 'react'
 import Layout from '../../Layout'
 import axios from 'axios'
 
-import Table from '../../Components/table'
+import {TableComponent as Table, IHeader} from '../../Components/table'
 import { Button, Typography } from '@mui/material'
 
-interface IAuthors {
+export interface IAuthor {
   id: number
   name: string
 }
 
-const authorsTableHeaders = ['ID', 'Name']
+const authorsTableHeaders : IHeader[] = [
+  {name: 'id', value: 'ID'},
+  {name: 'name', value: 'Name'}
+]
 
 const Authors = () => {
-  const [authors, setAuthors] = useState([] as IAuthors[])
+  const [authors, setAuthors] = useState([] as IAuthor[])
 
   const fetchAuthors = async () => {
     try {
@@ -25,7 +28,7 @@ const Authors = () => {
     }
   }
 
-  const handleClick = (data: IAuthors) => {
+  const handleClick = (data: IAuthor) => {
     window.location.href = `/authors/${data.id}`
   }
 

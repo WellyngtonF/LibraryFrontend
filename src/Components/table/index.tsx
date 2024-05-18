@@ -1,14 +1,18 @@
 import { Paper, Table, TableContainer, TableRow, TableCell, TableBody, TableHead } from '@mui/material'
-import React from 'react'
+
+export interface IHeader {
+    name: string
+    value: string
+}
 
 interface ITableProps {
     data : any[]
-    headers : string[]
+    headers : IHeader[]
     onHover?: boolean
     handleClick?: (data: any) => void
 }
 
-const TableComponent = (TableProps: ITableProps) => {
+export const TableComponent = (TableProps: ITableProps) => {
     const data = TableProps.data
     const headers = TableProps.headers
     const onHover = TableProps.onHover
@@ -20,15 +24,15 @@ const TableComponent = (TableProps: ITableProps) => {
                 <TableHead>
                     <TableRow>
                         {headers.map((header, index) => (
-                            <TableCell sx={{color: 'white'}} key={index}>{header}</TableCell>
+                            <TableCell sx={{color: 'white'}} key={index}>{header.value}</TableCell>
                         ))}
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {data.map((row, index) => (
                         <TableRow key={index} hover={onHover} onClick={() => handleClick && handleClick(row)}>
-                            {Object.values(row).map((value, index) => (
-                                <TableCell sx={{color: 'white'}} key={index}>{value as React.ReactNode}</TableCell>
+                            {headers.map((header, index) => (
+                                <TableCell sx={{color: 'white'}} key={index}>{row[header.name]}</TableCell>
                             ))}
                         </TableRow>
                     ))}
@@ -37,5 +41,3 @@ const TableComponent = (TableProps: ITableProps) => {
         </TableContainer>
     )
 }
-
-export default TableComponent

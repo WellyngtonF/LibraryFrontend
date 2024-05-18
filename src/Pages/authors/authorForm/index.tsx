@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { Button, Grid, Paper, FormControl, TextField, FormLabel } from '@mui/material'
@@ -13,7 +13,7 @@ interface IAuthor {
 const AuthorForm = () => {
     // get id from url
     const { id } = useParams<{id: string}>()
-    const [author, setAuthor] = React.useState({} as IAuthor)
+    const [author, setAuthor] = useState({} as IAuthor)
     const isEdit = id != 'new'
 
     const fetchAuthorData = async () => {
